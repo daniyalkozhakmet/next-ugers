@@ -1,3 +1,30 @@
+body {
+  padding-top: 80px; /* Adjust the value according to the height of your navbar */
+}
+/* CustomContainer.css */
+
+/* Default width for large screens */
+.custom-container {
+  width: 80%;
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .custom-container {
+    width: 85%;
+    margin: 0 auto; /* Center the container horizontally */
+  }
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .custom-container {
+    width: 100%;
+    margin: 0 auto; /* Center the container horizontally */
+  }
+}
+/* 
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -104,4 +131,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */

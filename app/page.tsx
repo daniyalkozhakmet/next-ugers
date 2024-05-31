@@ -1,95 +1,63 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="custom-container">
+      <div className="mt-5 row">
+        <div className="col">
+          <h1>Инструкция для пользования приложением</h1>
+          <ol>
+            <li className="my-3">
+              <strong>Авторизация:</strong>
+              <ul>
+                <li>
+                  Первым шагом для использования приложения является
+                  авторизация. Для этого введите свои учетные данные (логин и
+                  пароль) в соответствующие поля на странице входа.
+                </li>
+                <li>
+                  Если у вас еще нет учетной записи, свяжитесь с нашей
+                  поддержкой по WhatsApp номеру 8-(705)-812-93-43
+                </li>
+              </ul>
+            </li>
+            <li className="my-3">
+              <strong>Создание заявки:</strong>
+              <ul>
+                <li>
+                  После успешной авторизации вы будете перенаправлены на
+                  страницу с вашими заявками.
+                </li>
+                <li>Для создания новой заявки выберите "Создать заявку".</li>
+                <li>
+                  Заполните необходимую информацию в форме создания заявки и
+                  нажмите кнопку "Создать"
+                </li>
+                <li>
+                  Чтобы прикрепить фотографию к заявке, найдите нужную заявку в
+                  списке и нажмите кнопку "Редактировать".
+                </li>
+                <li>
+                  В открывшейся форме редактирования найдите соответствующее
+                  поле для прикрепления фотографии и выберите нужное изображение
+                  с вашего устройства.
+                </li>
+                <li>
+                  После прикрепления фотографии сохраните изменения, нажав
+                  кнопку "Редактировать".
+                </li>
+              </ul>
+            </li>
+            <li className="my-3">
+              <strong>Связь с поддержкой:</strong>
+              <ul>
+                <li>
+                  Если у вас возникли проблемы с авторизацией или созданием
+                  заявки, обратитесь по WhatsApp номеру 8-(705)-812-93-43.
+                </li>
+              </ul>
+            </li>
+          </ol>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
