@@ -8,7 +8,7 @@ const GET = async (req: NextRequest, res: NextResponse) => {
   try {
     await connect();
 
-    const user_id = req.url.split("/").pop();
+    const user_id = req.url.split("/").filter(Boolean).pop();
 
     const user = await User.findById(user_id).populate("res");
 
@@ -32,7 +32,7 @@ const GET = async (req: NextRequest, res: NextResponse) => {
 const DELETE = async (req: NextRequest, res: NextResponse) => {
   try {
     await connect();
-    const user_id = req.url.split("/").pop();
+    const user_id = req.url.split("/").filter(Boolean).pop();
     const is_deleted = await User.deleteOne({ _id: user_id });
     if (is_deleted.deletedCount == 1) {
       return Response.json({ data: { message: "Пользователь удалена" } });

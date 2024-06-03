@@ -39,7 +39,7 @@ const GET = async (req: NextRequest, res: NextResponse) => {
     if (session?.user.role == "user") {
       await connect();
 
-      const claim_id = req.url.split("/").pop();
+      const claim_id = req.url.split("/").filter(Boolean).pop();
       console.log({ claim_id: req.url.split("/") });
       const claim = await Claim.findById(claim_id).populate("res");
 
@@ -64,7 +64,7 @@ const GET = async (req: NextRequest, res: NextResponse) => {
     if (session?.user.role == "admin") {
       await connect();
 
-      const claim_id = req.url.split("/").pop();
+      const claim_id = req.url.split("/").filter(Boolean).pop();
 
       const claim = await Claim.findById(claim_id).populate("res");
 
