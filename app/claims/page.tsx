@@ -11,7 +11,7 @@ const fetchClaims = async (params: ParamType | null) => {
   try {
     if (params) {
       const result = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/claims?claim_number=${params.claim_number}&invent_num=${params.invent_num}&neighborhood=${params.neighborhood}&res=${params.res}`,
+        `${process.env.VERCEL_URL}/api/claims?claim_number=${params.claim_number}&invent_num=${params.invent_num}&neighborhood=${params.neighborhood}&res=${params.res}`,
         {
           next: { tags: ["claims"] },
           headers: Object.fromEntries(headers()),
@@ -24,13 +24,10 @@ const fetchClaims = async (params: ParamType | null) => {
 
       return result;
     }
-    const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/claims`,
-      {
-        next: { tags: ["Claims"] },
-        headers: Object.fromEntries(headers()),
-      }
-    );
+    const result = await fetch(`${process.env.VERCEL_URL}/api/claims`, {
+      next: { tags: ["Claims"] },
+      headers: Object.fromEntries(headers()),
+    });
 
     if (!result.ok) {
       throw new Error("Failed to fetch");

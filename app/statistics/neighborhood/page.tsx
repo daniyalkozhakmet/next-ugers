@@ -11,7 +11,7 @@ import { headers } from "next/headers";
 const fetchStatisticsByNeighborhood = async () => {
   try {
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/statistics/neighborhood`,
+      `${process.env.VERCEL_URL}/api/statistics/neighborhood`,
       {
         next: { tags: ["Statistics"] },
         headers: Object.fromEntries(headers()),

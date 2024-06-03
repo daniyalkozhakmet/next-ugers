@@ -1,6 +1,5 @@
 import connect from "@/utils/db";
 import User, { UserRole } from "@/app/models/User";
-
 const GET = async () => {
   try {
     await connect();

@@ -11,7 +11,7 @@ const fetchClaims = async (params: ParamType | null) => {
   try {
     if (params) {
       const result = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/claims?res=${params.res}`,
+        `${process.env.VERCEL_URL}/api/claims?res=${params.res}`,
         {
           next: { tags: ["claims"] },
           headers: Object.fromEntries(headers()),
@@ -25,7 +25,7 @@ const fetchClaims = async (params: ParamType | null) => {
       return result;
     }
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/claims`,
+      `${process.env.VERCEL_URL}/api/claims`,
       {
         next: { tags: ["Claims"] },
         headers: Object.fromEntries(headers()),

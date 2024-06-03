@@ -16,21 +16,50 @@ export const Paginator = ({
   page: number;
   pageClick: (page: number) => void;
 }) => {
-  const pageNumbers = Array.from(
-    { length: pagination.totalPages },
-    (_, i) => i + 1
+  const { pageNumber, totalPages } = pagination;
+  const pageNumbers = [];
+
+  const maxPageNumbersToShow = 5; // Number of pages to display in pagination
+
+  let startPage = Math.max(
+    pageNumber - Math.floor(maxPageNumbersToShow / 2),
+    1
   );
+  let endPage = Math.min(startPage + maxPageNumbersToShow - 1, totalPages);
+
+  if (endPage - startPage + 1 < maxPageNumbersToShow) {
+    startPage = Math.max(endPage - maxPageNumbersToShow + 1, 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination justify-content-center">
-        {/* <li className={`page-item ${pagination.pageNumber == 1 && "disabled"}`}>
-          <a className="page-link" href="#" tabIndex={-1}>
-            Previous
-          </a>
-        </li> */}
+        {pageNumber > 1 && (
+          <li className="page-item" onClick={() => pageClick(pageNumber - 1)}>
+            <span className="page-link">Предыдущий</span>
+          </li>
+        )}
+
+        {startPage > 1 && (
+          <>
+            <li className="page-item" onClick={() => pageClick(1)}>
+              <span className="page-link">1</span>
+            </li>
+            {startPage > 2 && (
+              <li className="page-item disabled">
+                <span className="page-link">...</span>
+              </li>
+            )}
+          </>
+        )}
+
         {pageNumbers.map((page) => (
           <li
-            className={`page-item ${pagination.pageNumber == page && "active"}`}
+            className={`page-item ${pageNumber == page ? "active" : ""}`}
             key={page}
             onClick={() => pageClick(page)}
           >
@@ -38,11 +67,24 @@ export const Paginator = ({
           </li>
         ))}
 
-        {/* <li className={`page-item ${pagination.pageNumber != 1 && "disabled"}`}>
-          <a className="page-link" href="#">
-            Next
-          </a>
-        </li> */}
+        {endPage < totalPages && (
+          <>
+            {endPage < totalPages - 1 && (
+              <li className="page-item disabled">
+                <span className="page-link">...</span>
+              </li>
+            )}
+            <li className="page-item" onClick={() => pageClick(totalPages)}>
+              <span className="page-link">{totalPages}</span>
+            </li>
+          </>
+        )}
+
+        {pageNumber < totalPages && (
+          <li className="page-item" onClick={() => pageClick(pageNumber + 1)}>
+            <span className="page-link">Cледующий</span>
+          </li>
+        )}
       </ul>
     </nav>
   );

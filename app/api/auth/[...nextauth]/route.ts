@@ -1,9 +1,6 @@
 import NextAuth, {
   AuthOptions,
-  RequestInternal,
-  SessionStrategy,
 } from "next-auth";
-import type { NextAuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials";
 // Your own logic for dealing with plaintext password strings; be careful!
 import bcrypt from "bcryptjs";
@@ -21,7 +18,6 @@ export const authOptions: AuthOptions = {
       },
       authorize: async (credentials) => {
         if (credentials) {
-
           await connect();
           let user = null;
 
@@ -78,6 +74,6 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV == "development",
 };
- const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

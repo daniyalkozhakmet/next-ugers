@@ -35,11 +35,12 @@ const DELETE = async (req: NextRequest, res: NextResponse) => {
 const GET = async (req: NextRequest, res: NextResponse) => {
   try {
     const session = await getServerSession(authOptions);
+
     if (session?.user.role == "user") {
       await connect();
 
       const claim_id = req.url.split("/").pop();
-
+      console.log({ claim_id: req.url.split("/") });
       const claim = await Claim.findById(claim_id).populate("res");
 
       if (!claim) {
@@ -97,7 +98,6 @@ const PUT = async (req: NextRequest, res: NextResponse) => {
     const files = await req.formData();
     let data = Object.fromEntries(files.entries());
 
-
     if (session?.user.role == "user" && data.res_id == session.user.res) {
       await connect();
       const claimDb = await Claim.findById(data._id);
@@ -148,9 +148,6 @@ const PUT = async (req: NextRequest, res: NextResponse) => {
             : data.image7,
       };
 
-
- 
-
       await Claim.findByIdAndUpdate(
         data._id,
         { ...data, res: data.res_id },
@@ -167,7 +164,6 @@ const PUT = async (req: NextRequest, res: NextResponse) => {
       },
     });
   } catch (err: any) {
-
     return Response.json({
       error: {
         message: "Заявка не найдена",

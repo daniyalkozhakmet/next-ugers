@@ -12,13 +12,11 @@ type Params = {
 };
 const fetchClaimById = async (id: string) => {
   try {
-    const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/claims/${id}`,
-      {
-        next: { tags: ["Claims"] },
-        headers: Object.fromEntries(headers()),
-      }
-    );
+    console.log({ id });
+    const result = await fetch(`${process.env.VERCEL_URL}/api/claims/${id}`, {
+      next: { tags: ["Claims"] },
+      headers: Object.fromEntries(headers()),
+    });
 
     if (!result.ok) {
       throw new Error("Failed to fetch");
@@ -31,6 +29,8 @@ const fetchClaimById = async (id: string) => {
 };
 export default async function Page({ params }: Params) {
   const { slug } = params;
+
+
   const data = await fetchClaimById(slug);
   const claim: ClaimsGetByIdResponse = await data.json();
   let claimConverted: ClaimGetByIdSuccess | null = null;
