@@ -9,7 +9,7 @@ import { headers } from "next/headers";
 const fetchStatisticsByRes = async () => {
   try {
     const result = await fetch(
-      `${process.env.VERCEL_URL}/api/statistics/res`,
+      `${process.env.URL}/api/statistics/res`,
       {
         next: { tags: ["Statistics"] },
         headers: Object.fromEntries(headers()),

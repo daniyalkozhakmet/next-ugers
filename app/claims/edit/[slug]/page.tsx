@@ -14,7 +14,7 @@ type Params = {
 const fetchClaimById = async (id: string) => {
   try {
     const result = await fetch(
-      `${process.env.VERCEL_URL}/api/claims/${id}`,
+      `${process.env.URL}/api/claims/${id}`,
       {
         next: { tags: ["Claims"] },
         headers: Object.fromEntries(headers()),

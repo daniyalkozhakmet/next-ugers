@@ -11,7 +11,7 @@ const fetchClaims = async (params: ParamType | null) => {
   try {
     if (params) {
       const result = await fetch(
-        `${process.env.VERCEL_URL}/api/claims?claim_number=${params.claim_number}&invent_num=${params.invent_num}&neighborhood=${params.neighborhood}&res=${params.res}`,
+        `${process.env.URL}/api/claims?claim_number=${params.claim_number}&invent_num=${params.invent_num}&neighborhood=${params.neighborhood}&res=${params.res}`,
         {
           next: { tags: ["claims"] },
           headers: Object.fromEntries(headers()),
@@ -24,7 +24,7 @@ const fetchClaims = async (params: ParamType | null) => {
 
       return result;
     }
-    const result = await fetch(`${process.env.VERCEL_URL}/api/claims`, {
+    const result = await fetch(`${process.env.URL}/api/claims`, {
       next: { tags: ["Claims"] },
       headers: Object.fromEntries(headers()),
     });
