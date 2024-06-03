@@ -7,20 +7,7 @@ import {
   UsersGetResponse,
 } from "@/lib/ts/user";
 import { userApi } from "./userApi";
-export const fetchUsers = async () => {
-  try {
-    const result = await fetch(`${process.env.URL}/api/users`, {
-      next: { tags: ["Users"] },
-    });
-    if (!result.ok) {
-      throw new Error("Failed to fetch");
-    }
 
-    return result;
-  } catch (error) {
-    throw error;
-  }
-};
 const extendedApi = userApi.injectEndpoints({
   endpoints: (build) => ({
     createUser: build.mutation<UserCreateResponse, UserCreateRequest>({
