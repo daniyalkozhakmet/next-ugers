@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
+    "crypto": "^1.0.1",
     "firebase": "^10.12.2",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0",
