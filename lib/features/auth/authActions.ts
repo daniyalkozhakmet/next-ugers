@@ -1,8 +1,6 @@
 import { signIn, signOut } from "next-auth/react";
 import { authApi } from "./authApi";
-import {
-  BaseQueryApi,
-} from "@reduxjs/toolkit/query";
+import { BaseQueryApi } from "@reduxjs/toolkit/query";
 import { loading, loginError, loginSuccess, logoutSuccess } from "./authSlice";
 interface SignInResponse {
   error?: string;
@@ -28,8 +26,8 @@ const signOutQuertFn = async (
   try {
     dispatch(loading());
     const res = await signOut({ redirect: false });
-    console.log('res',res);
-    
+    console.log("res", res);
+
     dispatch(logoutSuccess());
     // return { data: { url: res.url } };
     return { data: res as SignOutResponse };

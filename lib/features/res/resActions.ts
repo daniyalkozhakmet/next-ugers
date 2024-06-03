@@ -3,7 +3,7 @@ import { resApi } from "./resApi";
 
 export const fetchRes = async () => {
   try {
-    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/res`, {
+    const result = await fetch(`${process.env.URL}/api/res`, {
       next: { tags: ["Res"] },
     });
     if (!result.ok) {

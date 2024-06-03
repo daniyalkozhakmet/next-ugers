@@ -9,7 +9,7 @@ import {
 import { userApi } from "./userApi";
 export const fetchUsers = async () => {
   try {
-    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
+    const result = await fetch(`${process.env.URL}/api/users`, {
       next: { tags: ["Users"] },
     });
     if (!result.ok) {
