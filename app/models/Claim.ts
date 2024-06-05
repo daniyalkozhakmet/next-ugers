@@ -22,7 +22,7 @@ const claimSchema = new Schema(
   {
     claim_number: {
       type: String,
-      unique: true,
+      unique: false,
       required: true,
     },
     address: {
